@@ -16,6 +16,10 @@ namespace WSInfraestructure.Data
             modelBuilder.Entity<SingleCharacter>().Property(e => e.Episode).HasConversion(
                 v => string.Join(',', v),
                 v => v.Split(',', System.StringSplitOptions.RemoveEmptyEntries));
+            modelBuilder.Entity<SingleCharacter>().OwnsOne(x => x.Origin);
+            modelBuilder.Entity<SingleCharacter>().OwnsOne(x => x.Location);
+
+
         }
     }
 }
