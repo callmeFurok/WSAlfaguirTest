@@ -9,29 +9,114 @@ namespace WSApplication.Main
     {
         private readonly ICharactersDomain _charactersDomain;
 
-        public Task<Response<bool>> AddCharacterAsync(SingleCharacter character)
+        public CharactersApplication(ICharactersDomain charactersDomain)
         {
-            throw new NotImplementedException();
+            _charactersDomain = charactersDomain;
+        }
+        public async Task<Response<bool>> AddCharacterAsync(SingleCharacter character)
+        {
+            var response = new Response<bool>();
+            try
+            {
+                response.Data = await _charactersDomain.AddCharacterAsync(character);
+                if (response.Data)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Creado con exito";
+                }
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+            }
+            return response;
         }
 
-        public Task<Response<bool>> DeleteCharacterAsync(int id)
+        public async Task<Response<bool>> DeleteCharacterAsync(int id)
         {
-            throw new NotImplementedException();
+            var response = new Response<bool>();
+            try
+            {
+                response.Data = await _charactersDomain.DeleteCharacterAsync(id);
+
+                if (response.Data)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Eliminacion exitosa";
+                }
+            }
+            catch (Exception e)
+            {
+
+                response.Message = e.Message;
+            }
+            return response;
         }
 
-        public Task<Response<SingleCharacter>> GetCharacterByIdAsync(int id)
+        public async Task<Response<SingleCharacter>> GetCharacterByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var response = new Response<SingleCharacter>();
+            try
+            {
+                response.Data = await _charactersDomain.GetCharacterByIdAsync(id);
+
+                if (response.Data != null)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Consulta Exitosa";
+                }
+            }
+            catch (Exception e)
+            {
+
+                response.Message = e.Message;
+            }
+
+            return response;
         }
 
-        public Task<Response<List<SingleCharacter>>> GetCharactersAsync()
+        public async Task<Response<List<SingleCharacter>>> GetCharactersAsync()
         {
-            throw new NotImplementedException();
+            var response = new Response<List<SingleCharacter>>();
+
+            try
+            {
+                response.Data = await _charactersDomain.GetCharactersAsync();
+
+                if (response.Data != null)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Lista de todos los personajes";
+                }
+            }
+            catch (Exception e)
+            {
+
+                response.Message = e.Message;
+            }
+
+            return response;
         }
 
-        public Task<ResponseApiEntity> ResponseApi()
+        public async Task<Response<ResponseApiEntity>> ResponseApi()
         {
-            throw new NotImplementedException();
+            var response = new Response<ResponseApiEntity>();
+            try
+            {
+                response.Data = await _charactersDomain.ResponseApi();
+                if (response.Data != null)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Respuesta de la API de Rick And Morty";
+                }
+            }
+            catch (Exception e)
+            {
+
+                response.Message = e.Message;
+            }
+
+            return response;
         }
     }
 }

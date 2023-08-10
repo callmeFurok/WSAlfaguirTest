@@ -22,7 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WSApplication.Interface\WSApplication.Interface.csproj" />
+    <ProjectReference Include="..\WSApplication.Main\WSApplication.Main.csproj" />
+    <ProjectReference Include="..\WSDomain.Core\WSDomain.Core.csproj" />
+    <ProjectReference Include="..\WSDomain.Interface\WSDomain.Interface.csproj" />
     <ProjectReference Include="..\WSInfraestructure.Data\WSInfraestructure.Data.csproj" />
+    <ProjectReference Include="..\WSInfraestructure.Interface\WSInfraestructure.Interface.csproj" />
+    <ProjectReference Include="..\WSInfraestructure.Repository\WSInfraestructure.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,8 +12,8 @@ namespace WSDomain.Entity
         public string Species { get; set; }
         public string Type { get; set; }
         public string Gender { get; set; }
-        public string Origin { get; set; }
-        public string Location { get; set; }
+        public CharacterOrigin Origin { get; set; }
+        public CharacterLocation Location { get; set; }
         public string Image { get; set; }
         public string[] Episode { get; set; }
         public string Url { get; set; }

@@ -47,8 +47,9 @@ namespace WSInfraestructure.Repository
         //  use rick and morty api an return all characters
         public async Task<ResponseApiEntity> ResponseApi()
         {
+            var apiUrl = "https://rickandmortyapi.com/api/character";
             var client = new HttpClient();
-            var response = await client.GetAsync("https://rickandmortyapi.com/api/character");
+            var response = await client.GetAsync(apiUrl);
             var result = await response.Content.ReadAsStringAsync();
             var resultObject = JsonConvert.DeserializeObject<ResponseApiEntity>(result);
             return resultObject;
